@@ -1,13 +1,10 @@
 package com.example.backendclass.repository;
 
 import com.example.backendclass.model.User;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-@Repository
-public class UserRepository {
+import java.util.List;
 
-    public User getUser(){
-        User user = new User("christy s", "usa", 16);
-        return user;
-    }
+public interface UserRepository extends MongoRepository<User, String> {
+    List<User> findAllByAddress(String address);
 }
